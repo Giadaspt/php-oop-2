@@ -1,6 +1,7 @@
 <?php
 
-class Product extends Shop {
+class Product {
+  private $name;
   private $price;
   private $description;
 
@@ -10,8 +11,6 @@ class Product extends Shop {
     $this->price = $_price;
     $this->description = $_description;
   }
-
-
 
   public function setName($_name){
     $this->name = $_name;

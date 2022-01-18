@@ -6,7 +6,7 @@ class User {
   private $date_of_birth;
   private $age;
   private $address;
-  protected $cart;
+  protected $cart = [];
   protected $typeOfUser= "";
   protected $discount = 0;
 
@@ -31,17 +31,17 @@ class User {
   public function setAddress($_address){
     $this->address = $_address;
   }
-  public function setCart($_cart){
-    $this->cart = $_cart;
+  public function addProductToCart($_cart){
+    $this->cart[] = $_cart;
   }
   public function setTypeOfUser($_typeOfUser){
     $this->typeOfUser = $_typeOfUser;
-  } 
+  }
   public function setDiscount($_discount){
     $this->discount = $_discount;
-  } 
- 
- 
+  }
+
+
   public function getName(){
     return $this->name ;
   }
@@ -62,17 +62,25 @@ class User {
   }
   public function getTypeOfUser(){
     return $this->typeOfUser;
-  } 
+  }
   public function getDiscount(){
     return $this->discount;
-  } 
+  }
 
 
 
   public function customerDiscount(){
-    if($this->age === 18){
-      $this->discount = 25;
-      return  "Ecco qui un regalo per la tua maggiore età 25%";
+    $this->date_of_birth = date("18/01");
+
+    $date = date("d/m");
+
+    if($this->date_of_birth == $date){
+      return "Tanti Auguri! In regalo per te uno sconto del 25%";
     }
+
+    // if($this->age === 30){
+    //   $this->discount = 25;
+    //   return  "ecco qui un regalo per la tua maggiore età 25%";
+    // }
   }
 }

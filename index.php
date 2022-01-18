@@ -12,23 +12,38 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
 <?php
 
   require_once __DIR__ . "/classes/Shop.php";
-  require_once __DIR__ . "/classes/ShopProduct.php";
+  require_once __DIR__ . "/classes/Product.php";
   require_once __DIR__ . "/classes/User.php";
   require_once __DIR__ . "/classes/UserPremium.php";
   require_once __DIR__ . "/classes/Payment.php";
   require_once __DIR__ . "/classes/PayCard.php";
-  require_once __DIR__ . "/classes/PayCashOnDelivery.php";
 
   $new_shop = new Shop("Ciccia Buffa S.r.l.");
-  var_dump($new_shop);
+  // var_dump($new_shop);
 
   $new_product = new Product("Spremiagrumi elettrico", 30, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, aperiam.");
-  var_dump($new_product);
+  // var_dump($new_product);
 
   $new_user = new User("Giada", "Saputo");
-  $new_user-> setAge(18);
-  var_dump( $new_user)
+  $new_user-> getDob();
+  var_dump( $new_user);
 
+  $premium_user = new UserPremium("Giada", "Saputo");
+  $premium_user->setCustomerPremium("Silver");
+  var_dump($premium_user);
+  
+
+  $new_user->addProductToCart($new_product);
+  $premium_user->addProductToCart($new_product);
+  var_dump($new_user);
+  var_dump($premium_user);
+
+
+  $new_payment = new Payment("carta"); 
+  var_dump($new_payment);
+
+  $new_payCard = new PayCard("carta", 12345678, "18/01/2022"); 
+  var_dump($new_payCard);
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +89,19 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
     <?php echo $new_user->getLastname() ?> 
     <?php echo $new_user->customerDiscount() ?> 
   </p>
+
+  <!-- payment -->
+  <p>
+    <?php echo $new_payment->payType() ?>
+  </p>
+  <p>
+    Pago con 
+    <?php echo $new_payCard->getType() ?>
+  </p>
+  <p>
+    <?php echo $new_payCard->cardExpired() ?>
+  </p>
+
 
 </body>
 </html>
