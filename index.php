@@ -22,6 +22,8 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   $new_shop = new Shop("Ciccia Buffa S.r.l.");
   var_dump($new_shop);
 
+  $new_product = new ShopProduct("Spremiagrumi elettrico", 30, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, aperiam.");
+  var_dump($new_product);
 ?>
 
 <!DOCTYPE html>
@@ -30,9 +32,35 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .product{
+      width: 200px;
+      background-color: lightgreen;
+    }
+  </style>
+
   <title>php-oop-2</title>
 </head>
 <body>
+
+  <h1>
+    <?php echo  $new_shop->getName()?>
+  </h1>
+
+  <div class="product">
+    <h3>
+      <?php echo $new_product->getName() ?>
+    </h3>
+    <h4>
+      Prezzo:
+      <?php echo $new_product->getPrice() ?>
+    </h4>
+    <p>
+      Descrizione:
+      <?php echo $new_product->getDescription() ?>
+    </p>
+  </div>
   
 </body>
 </html>
