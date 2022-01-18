@@ -1,17 +1,21 @@
 <?php
-require_once __DIR__ . "/Shop.php";
 
-class ShopProduct extends Shop {
+class Product extends Shop {
   private $price;
   private $description;
 
   function __construct($_name, $_price, $_description)
   {
-    parent::__construct($_name);
-      $this->price = $_price;
-      $this->description = $_description;
+    $this->name = $_name;
+    $this->price = $_price;
+    $this->description = $_description;
   }
 
+
+
+  public function setName($_name){
+    $this->name = $_name;
+  }
   public function setPrice($_price){
     $this->price = $_price;
   }
@@ -19,6 +23,10 @@ class ShopProduct extends Shop {
     $this->description = $_description;
   }
 
+
+  public function getName(){
+    return $this->name ;
+  }
   public function getPrice(){
     return $this->price;
   }

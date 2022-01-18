@@ -22,8 +22,13 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   $new_shop = new Shop("Ciccia Buffa S.r.l.");
   var_dump($new_shop);
 
-  $new_product = new ShopProduct("Spremiagrumi elettrico", 30, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, aperiam.");
+  $new_product = new Product("Spremiagrumi elettrico", 30, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, aperiam.");
   var_dump($new_product);
+
+  $new_user = new User("Giada", "Saputo");
+  $new_user-> setAge(18);
+  var_dump( $new_user)
+
 ?>
 
 <!DOCTYPE html>
@@ -43,11 +48,12 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   <title>php-oop-2</title>
 </head>
 <body>
-
+    <!-- e-commerce name -->
   <h1>
     <?php echo  $new_shop->getName()?>
   </h1>
 
+  <!-- product -->
   <div class="product">
     <h3>
       <?php echo $new_product->getName() ?>
@@ -61,6 +67,13 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
       <?php echo $new_product->getDescription() ?>
     </p>
   </div>
-  
+
+  <!-- user -->
+  <p>
+    <?php echo $new_user->getName() ?> 
+    <?php echo $new_user->getLastname() ?> 
+    <?php echo $new_user->customerDiscount() ?> 
+  </p>
+
 </body>
 </html>
