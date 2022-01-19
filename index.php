@@ -17,6 +17,7 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   require_once __DIR__ . "/classes/UserPremium.php";
   require_once __DIR__ . "/classes/Payment.php";
   require_once __DIR__ . "/classes/PayCard.php";
+  // require_once __DIR__ . "/classes/Address.php";
 
   $new_shop = new Shop("Ciccia Buffa S.r.l.");
   $new_shop->streetName = "via nonloso";
