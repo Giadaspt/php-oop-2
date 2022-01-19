@@ -17,13 +17,12 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   require_once __DIR__ . "/classes/UserPremium.php";
   require_once __DIR__ . "/classes/Payment.php";
   require_once __DIR__ . "/classes/PayCard.php";
-  // require_once __DIR__ . "/classes/Address.php";
 
   $new_shop = new Shop("Ciccia Buffa S.r.l.");
   $new_shop->streetName = "via nonloso";
   $new_shop->town = "Strangolagalli ";
   $new_shop->country = "Italia";
-  var_dump($new_shop);
+  // var_dump($new_shop);
   // var_dump($new_shop->getGenericAddress());
 
   $new_product = new Product("Spremiagrumi elettrico", 30, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, aperiam.");
@@ -31,12 +30,17 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
 
   $new_user = new User("Giada", "Saputo");
   $new_user-> getDob();
-  // var_dump( $new_user);
+  $new_user->streetName = "via noncè";
+  $new_user->town = "Monterotondo ";
+  $new_user->postCode = 12345;
+  $new_user->country = "Italia";
+  //var_dump( $new_user);
+  //var_dump( $new_user->getAddressShipping());
 
   $premium_user = new UserPremium("Giada", "Saputo");
   $premium_user->setCustomerPremium("Silver");
-  var_dump($premium_user);
-  
+  //var_dump($premium_user);
+
 
   $new_user->addProductToCart($new_product);
   $premium_user->addProductToCart($new_product);
@@ -44,11 +48,18 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   // var_dump($premium_user);
 
 
-  $new_payment = new Payment("carta"); 
+  $new_payment = new Payment("carta");
   // var_dump($new_payment);
 
-  $new_payCard = new PayCard("carta", 12345678, "01/2022"); 
-  var_dump($new_payCard);
+  
+
+  try {
+    $new_payCard = new PayCard("carta", 121212121212 , "01/2022");
+    var_dump($new_payCard);
+  } catch (Exception $e) {
+    echo $e->getMessage();
+  }
+  
 ?>
 
 <!DOCTYPE html>
@@ -90,9 +101,9 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
 
   <!-- user -->
   <p>
-    <?php echo $new_user->getName() ?> 
-    <?php echo $new_user->getLastname() ?> 
-    <?php echo $new_user->customerDiscount() ?> 
+    <?php echo $new_user->getName() ?>
+    <?php echo $new_user->getLastname() ?>
+    <?php echo $new_user->customerDiscount() ?>
   </p>
 
   <!-- payment -->
@@ -100,12 +111,10 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
     <?php echo $new_payment->payType() ?>
   </p>
   <p>
-    Pago con 
-    <?php echo $new_payCard->getType() ?>
+    Pago con
+    <?php echo $new_payment->getType() ?>
   </p>
-  <p>
-    <?php echo $new_payCard->cardExpired() ?>
-  </p>
+ 
 
 
 </body>

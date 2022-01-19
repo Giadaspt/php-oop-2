@@ -10,15 +10,15 @@ class PayCard extends Payment {
   function __construct($type, $_cardNumb, $_exparing)
   {
     parent::__construct($type);
-    $this->cardNumb = $_cardNumb;
-    $this->exparing = $_exparing;
+    $this->cardNumb = $this->cardNumber($_cardNumb);
+    $this->exparing = $this->cardExpired($_exparing);
   }
 
   public function setCardNumb( $_cardNumb){
-    $this->cardNumb = $_cardNumb;
+    $this->cardNumb = $this->cardNumber($_cardNumb);
   }
   public function setExparing( $_exparing){
-    $this->exparing = $_exparing;
+    $this->exparing = $this->cardExpired($_exparing);
   }
   public function setCvv( $_cvv){
     $this->cvv = $_cvv;
@@ -41,7 +41,15 @@ class PayCard extends Payment {
     return $this->owner;
   }
 
-  public function cardExpired(){
+
+  private function cardNumber($cardNumb){
+    if(!is_int($cardNumb) || strlen($cardNumb) != 12){
+      throw new Exception("I caratteri devono essere docicie e tutti numeri");
+    }
+    return $cardNumb;
+  }
+
+  private function cardExpired(){
     $date= date("m/Y");
 
     if($date == $this->exparing){

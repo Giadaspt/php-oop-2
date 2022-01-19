@@ -1,15 +1,14 @@
 <?php
-// require_once __DIR__ ."/Address";
+require_once __DIR__ ."/Address.php";
 
 
 class Shop {
 
-  // use Address;
+  use Address;
 
   private $name;
   private $store;
   private $cart;
-  private $discount;
 
   function __construct($_name)
   {
@@ -25,18 +24,12 @@ class Shop {
   public function setCart($_cart){
     $this->cart = $_cart;
   }
-  public function setDiscount($_discount){
-    $this->discount = $_discount;
-  }
 
   public function getStore(){
     return $this->store;
   }
   public function getCart(){
     return $this->cart;
-  }
-  public function getDiscount(){
-    return $this->discount;
   }
   public function getName(){
     return $this->name;

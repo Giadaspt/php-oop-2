@@ -1,12 +1,17 @@
 <?php
 
+require_once __DIR__ ."/Address.php";
+
 class User {
+
+  use Address;
+
   private $name;
   private $lastname;
   private $date_of_birth;
   private $age;
   private $address;
-  protected $cart = [];
+  protected $cart;
   protected $typeOfUser= "";
   protected $discount = 0;
 
@@ -31,8 +36,8 @@ class User {
   public function setAddress($_address){
     $this->address = $_address;
   }
-  public function addProductToCart($_cart){
-    $this->cart[] = $_cart;
+  public function addProductToCart(...$products){
+    $this->cart = $products;
   }
   public function setTypeOfUser($_typeOfUser){
     $this->typeOfUser = $_typeOfUser;

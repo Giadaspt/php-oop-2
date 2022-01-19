@@ -6,6 +6,7 @@ trait Address {
   public $town; 
   public $country;
 
+
   public function setStreetName($_streetName){
     $this->streetName = $_streetName;
   }
@@ -22,8 +23,8 @@ trait Address {
   public function gfetStreetName(){
     return $this->streetName ;
   }
-  public function getPostCode(){
-    return $this->postCode ;
+  public function getPostCode($postCode){
+    return $this->postCode = $this->postCodeNumb($postCode) ;
   }
   public function getTown(){
     return $this->town;
@@ -36,7 +37,15 @@ trait Address {
     return "$this->streetName, $this->town, $this->country";
   }
 
-  // public function getAddressShipping(){
-  //   return "$this->streetName, $this->town, $this->postCode,$this->country";
+  public function getAddressShipping(){
+    return "$this->streetName, $this->town, $this->postCode,$this->country";
+  }
+
+  // public function postCodeNumb($postCode){
+  //   if(!is_int($postCode) ){
+  //     throw new Exception("Il codice postale deve avere 5 numeri");
+  //   }
+  //   return $postCode;
   // }
+
 }

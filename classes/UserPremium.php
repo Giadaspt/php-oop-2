@@ -22,8 +22,8 @@ class UserPremium extends User {
   }
 
 
-  public function addProductToCart($_cart){
-    $addToCart = parent::addProductToCart($_cart);
+  public function addProductToCart(...$product){
+    $addToCart = parent::addProductToCart($product);
     return $addToCart;
   }
 
