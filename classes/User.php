@@ -70,7 +70,7 @@ class User {
 
 
   public function customerDiscount(){
-    $this->date_of_birth = date("18/01");
+    $this->date_of_birth = date("19/01");
 
     $date = date("d/m");
 
@@ -78,9 +78,5 @@ class User {
       return "Tanti Auguri! In regalo per te uno sconto del 25%";
     }
 
-    // if($this->age === 30){
-    //   $this->discount = 25;
-    //   return  "ecco qui un regalo per la tua maggiore età 25%";
-    // }
   }
 }

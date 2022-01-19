@@ -1,6 +1,11 @@
 <?php
+require_once __DIR__ ."/Address";
+
 
 class Shop {
+
+  use Address;
+
   private $name;
   private $store;
   private $cart;

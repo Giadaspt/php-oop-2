@@ -19,14 +19,18 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   require_once __DIR__ . "/classes/PayCard.php";
 
   $new_shop = new Shop("Ciccia Buffa S.r.l.");
-  // var_dump($new_shop);
+  $new_shop->streetName = "via nonloso";
+  $new_shop->town = "Strangolagalli ";
+  $new_shop->country = "Italia";
+  var_dump($new_shop);
+  // var_dump($new_shop->getGenericAddress());
 
   $new_product = new Product("Spremiagrumi elettrico", 30, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, aperiam.");
   // var_dump($new_product);
 
   $new_user = new User("Giada", "Saputo");
   $new_user-> getDob();
-  var_dump( $new_user);
+  // var_dump( $new_user);
 
   $premium_user = new UserPremium("Giada", "Saputo");
   $premium_user->setCustomerPremium("Silver");
@@ -35,12 +39,12 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
 
   $new_user->addProductToCart($new_product);
   $premium_user->addProductToCart($new_product);
-  var_dump($new_user);
-  var_dump($premium_user);
+  // var_dump($new_user);
+  // var_dump($premium_user);
 
 
   $new_payment = new Payment("carta"); 
-  var_dump($new_payment);
+  // var_dump($new_payment);
 
   $new_payCard = new PayCard("carta", 12345678, "01/2022"); 
   var_dump($new_payCard);
