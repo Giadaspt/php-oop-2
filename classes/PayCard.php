@@ -11,14 +11,14 @@ class PayCard extends Payment {
   {
     parent::__construct($type);
     $this->cardNumb = $this->cardNumber($_cardNumb);
-    $this->exparing = $this->cardExpired($_exparing);
+    $this->exparing = $_exparing;
   }
 
   public function setCardNumb( $_cardNumb){
     $this->cardNumb = $this->cardNumber($_cardNumb);
   }
-  public function setExparing( $_exparing){
-    $this->exparing = $this->cardExpired($_exparing);
+  public function setExparing( $_exparing, $_m, $_y){
+    $this->exparing = $this->cardExpired($_exparing, $_m, $_y);
   }
   public function setCvv( $_cvv){
     $this->cvv = $_cvv;
@@ -49,12 +49,38 @@ class PayCard extends Payment {
     return $cardNumb;
   }
 
-  private function cardExpired(){
+  private function cardExpired($y, $m){
     $date= date("m/Y");
 
-    if($date == $this->exparing){
-      return "La tua carta è scaduta";
+    
+    if(!is_int($y) || !is_int($m)){
+      throw new Exception("Devi inserire dei numeri"); 
     }
     
+    if($m>12 || $m<1){
+      throw new Exception("Inserisci un mese valido");
+    }
+    
+    if($date >= $this->exparing){
+      throw new Exception("La tua carta è scaduta") ;
+    }
+    
+    $this-> checkDate($y, $m);
+  }
+
+  private function checkdate($y, $m){
+    $expM = $m + 1;
+    $expY = $y;
+
+    if($expM > 12){
+      $expM = 1;
+      $expY = $y + 1;
+    }
+
+    if(!checkdate($expM,1,$expY)){
+      throw new Exception('La data non è valida');
+    }
+
+    return date("$expM/$expY");
   }
 }

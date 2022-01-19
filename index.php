@@ -54,7 +54,7 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   
 
   try {
-    $new_payCard = new PayCard("carta", 121212121212 , "01/2022");
+    $new_payCard = new PayCard("carta", 121212121212 , "01/2020");
     var_dump($new_payCard);
   } catch (Exception $e) {
     echo $e->getMessage();
@@ -114,7 +114,7 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
     Pago con
     <?php echo $new_payment->getType() ?>
   </p>
- 
+
 
 
 </body>
