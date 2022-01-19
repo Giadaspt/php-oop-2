@@ -42,7 +42,7 @@ class PayCard extends Payment {
   }
 
   public function cardExpired(){
-    $date= date("d/m/Y");
+    $date= date("m/Y");
 
     if($date == $this->exparing){
       return "La tua carta è scaduta";

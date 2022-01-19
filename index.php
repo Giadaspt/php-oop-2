@@ -42,7 +42,7 @@ Gestite eventuali eccezioni che si possono verificare (es: carta di credito scad
   $new_payment = new Payment("carta"); 
   var_dump($new_payment);
 
-  $new_payCard = new PayCard("carta", 12345678, "18/01/2022"); 
+  $new_payCard = new PayCard("carta", 12345678, "01/2022"); 
   var_dump($new_payCard);
 ?>
 
